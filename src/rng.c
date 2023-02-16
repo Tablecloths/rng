@@ -18,9 +18,13 @@ void rng_srand(int s) {
 }
 
 /* LCG based on the C standard sample implementation */
-int rng_int() {
+int rng_int(void) {
   seed = seed * 1103515245 + 12345;
   return (unsigned int)(seed / 65536) % 0x7fff;
+}
+
+float rng_float(void) {
+  return (float)rng_int()/(float)(RNG_RAND_MAX);
 }
 
 /* Box-Muller */

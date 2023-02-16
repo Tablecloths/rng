@@ -9,7 +9,10 @@ extern "C" {
 void rng_srand(int seed);
 
 /* Returns a pseudorandom integer between 0 and RNG_RAND_MAX (32767) */
-int rng_int();
+int rng_int(void);
+
+/* Returns a pseudorandom float evenly distributed between 0 and 1 */
+float rng_float(void);
 
 /* Returns a normally distributed random number with a given arithmetic mean and standard deviation */
 float rng_normal(float mean, float std);
