@@ -5,8 +5,14 @@
 extern "C" {
 #endif
 
+/* Provide a seed for random number generation */
 void rng_srand(int seed);
+
+/* Returns a pseudorandom integer between 0 and RNG_RAND_MAX (32767) */
 int rng_int();
+
+/* Returns a normally distributed random number with a given arithmetic mean and standard deviation */
+float rng_normal(float mean, float std);
 
 #ifdef LIBRNG_IMPLEMENTATION
 #undef LIBRNG_IMPLEMENTATION
