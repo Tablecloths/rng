@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 /* Provide a seed for random number generation */
-void rng_srand(int seed);
+void rng_srand(long seed);
 
 /* Returns a pseudorandom integer between 0 and RNG_RAND_MAX (32767) */
 int rng_int(void);
@@ -16,6 +16,14 @@ float rng_float(void);
 
 /* Returns a normally distributed random number with a given arithmetic mean and standard deviation */
 float rng_normal(float mean, float std);
+
+/* Sample simplex noise in n dimensions. Adapted from OpenSimplex2 */
+
+/* srand function for simplex noise generation */
+void rng_simplex_srand(long seed);
+
+/* 2D Simplex noise, standard lattice orientation */
+float rng_simplex2d(float x, float y);
 
 #ifdef LIBRNG_IMPLEMENTATION
 #undef LIBRNG_IMPLEMENTATION
