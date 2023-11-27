@@ -91,7 +91,7 @@ static const float GRAD3[] = { 1.0f,1.0f,0.0f,-1.0f,1.0f,0.0f,1.0f,-1.0f,0.0f,-1
 
 static inline int fast_floor(float x) {
   int xi = (int)x;
-  return x < xi ? xi - 1 : xi;
+  return xi - (x < xi);
 }
 
 static inline float dot2d(float gx, float gy, float x, float y) {
