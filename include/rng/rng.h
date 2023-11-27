@@ -19,10 +19,10 @@ float rng_float(void);
 /* Returns a normally distributed random number with a given arithmetic mean and standard deviation */
 float rng_normal(float mean, float std);
 
-/* Sample simplex-like noise in n dimensions */
-
+/* Provide a seed for simplex-like noise generation */
 void rng_simplex_srand(int64_t seed);
 
+/* Samples 2-dimensional simplex-like noise at a given location */
 float rng_simplex2d(float x, float y);
 
 #ifdef LIBRNG_IMPLEMENTATION

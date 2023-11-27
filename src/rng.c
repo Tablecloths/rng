@@ -14,12 +14,10 @@ void rng_srand(int64_t seed) {
   lcg_seed = seed;
 }
 
-/* Random numbers */
-
 /* LCG based on the C standard sample implementation */
 int rng_int(void) {
   lcg_seed = lcg_seed * 1103515245 + 12345;
-  return (unsigned int)(lcg_seed / 65536) % 0x7fff;
+  return (unsigned int)(lcg_seed / 65536) % RNG_RAND_MAX;
 }
 
 float rng_float(void) {
