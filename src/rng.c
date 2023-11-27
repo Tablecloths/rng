@@ -54,7 +54,7 @@ float rng_normal(float mean, float std) {
 
 /* Simplex Noise */
 
-int64_t simplex_seed = 0;
+static int64_t simplex_seed = 0;
 
 void rng_simplex_srand(int64_t seed) {
   simplex_seed = seed;
