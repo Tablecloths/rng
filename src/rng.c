@@ -8,10 +8,11 @@ extern "C" {
 
 #define RNG_RAND_MAX 0x7fff
 
+static int64_t seed = 0;
 static int64_t lcg_seed = 0;
 
-void rng_srand(int64_t seed) {
-  lcg_seed = seed;
+void rng_srand(int64_t s) {
+  seed = lcg_seed = s;
 }
 
 /* LCG based on the C standard sample implementation */
@@ -53,12 +54,6 @@ float rng_normal(float mean, float std) {
 }
 
 /* Simplex Noise */
-
-static int64_t simplex_seed = 0;
-
-void rng_simplex_srand(int64_t seed) {
-  simplex_seed = seed;
-}
 
 static const float F2 = 0.36602540378f; /* 0.5*(sqrt(3.0)-1.0) */
 static const float G2 = 0.2113248654f;  /* (3.0-sqrt(3.0))/6.0 */
@@ -122,8 +117,8 @@ float rng_simplex2d(float xin, float yin) {
   float y1 = y0 - j1 + G2;
   float x2 = x0 - 1.0f + 2.0f * G2;
   float y2 = y0 - 1.0f + 2.0f * G2;
-  int ii = (i + simplex_seed) & 255;
-  int jj = (j + simplex_seed) & 255;
+  int ii = (i + seed) & 255;
+  int jj = (j + seed) & 255;
   int gi0 = PERM_MOD_12[ii + PERM[jj]];
   int gi1 = PERM_MOD_12[ii + i1 + PERM[jj + j1]];
   int gi2 = PERM_MOD_12[ii + 1 + PERM[jj + 1]];
